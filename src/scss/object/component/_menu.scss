@@ -14,21 +14,23 @@
 // new BasisMenu();
 //
 
-.#{$bs-prefix}c-menu {
-	margin: 0;
-	padding: 0;
+%bs-c-menu--flex {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
+}
+
+.#{$bs-prefix}c-menu {
+	margin: 0;
+	padding: 0;
 	list-style: none;
 
 	&__item {
 		position: relative;
+		display: inline-block;
 		margin: 0 0 0 $bs-base-line-height;
 		padding: 0;
-		display: inline;
 		max-width: 100%;
-		flex: 1;
 
 		&:first-child {
 			margin-left: 0;
@@ -85,10 +87,13 @@
 	}
 
 	&--bar {
+		@extend %bs-c-menu--flex;
+
 		.#{$bs-prefix}c-menu__item {
+			display: flex;
 			margin: 0;
 			padding: 0;
-			display: flex;
+			flex: 1;
 
 			> a {
 				padding: (($bs-base-line-height * 2 - $bs-between-lines) / 2) ($bs-base-line-height / 2);
@@ -103,6 +108,8 @@
 	}
 
 	&--auto {
+		@extend %bs-c-menu--flex;
+
 		.#{$bs-prefix}c-menu__item {
 			flex: 0 1 auto;
 		}
